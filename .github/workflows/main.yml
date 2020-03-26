@@ -13,7 +13,7 @@ jobs:
         id: hello
         with:
           who-to-greet: 'This is an awesome action, testing:v2'
-          serice_account: ${{ secrets.GCLOUD_AUTH}}
+          service_account: ${{ secrets.GCLOUD_AUTH}}
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
