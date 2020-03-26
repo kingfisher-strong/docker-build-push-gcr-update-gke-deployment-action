@@ -6,7 +6,6 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
-inputs:
   service_account:
     description: 'Base64 encoded service account JSON from GCP IAM service account'
     required: true
