@@ -9,10 +9,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+        uses: actions/docker-build-push-gcr-update-gke-deployment-action@v2 # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'This is an awesome action:v2'
+          who-to-greet: 'This is an awesome action, testing:v2'
       # Use the output from the `hello` step
       - name: Get the output time
         run: echo "The time was ${{ steps.hello.outputs.time }}"
