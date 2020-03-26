@@ -6,6 +6,10 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+inputs:
+  service_account:
+    description: 'Base64 encoded service account JSON from GCP IAM service account'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -14,3 +18,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.who-to-greet }}
+    - ${{ inputs.serice_account }}
