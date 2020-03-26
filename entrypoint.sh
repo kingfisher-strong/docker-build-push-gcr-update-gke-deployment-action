@@ -5,5 +5,5 @@ time=$(date)
 echo "::set-output name=time::$time"
 
 set -e
-echo "${INPUT_SERVICE_ACCOUNT}" | base64 --decode > "${HOME}/gcloud.json" 
+echo "${INPUT_SERVICE_ACCOUNT}" | base64 -d > "${HOME}/gcloud.json" 
 gcloud auth activate-service-account --key-file="${HOME}/gcloud.json"
