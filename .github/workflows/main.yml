@@ -12,7 +12,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'This is an awesome action, testing:v2 checking gcr push'
+          who-to-greet: 'This is an awesome action, testing:v2 checking gcr push update creds'
           service_account: ${{ secrets.GCLOUD_AUTH}}
           name: 'kubefy-268211/action_test:test'
           registry: 'gcr.io'
