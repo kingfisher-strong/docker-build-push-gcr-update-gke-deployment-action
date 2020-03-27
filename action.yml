@@ -5,10 +5,16 @@ inputs:
   who-to-greet:  # id of input
     description: 'Who to greet'
     required: true
-    default: 'World'
   service_account:
     description: 'Base64 encoded service account JSON from GCP IAM service account'
     required: true
+  name:  # id of input
+    description: 'PROJECT_ID/REPONAME:TAG format'
+    required: true
+  registry:  # id of input
+    description: 'GCR registry host, It could be gcr.io/us.gcr.io/eu.gcr.io/asia.gcr.io'
+    required: true
+    default: 'gcr.io'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -18,3 +24,5 @@ runs:
   args:
     - ${{ inputs.who-to-greet }}
     - ${{ inputs.service_account }}
+    - ${{ inputs.name}}
+    - ${{ inputs.registry}}
