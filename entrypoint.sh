@@ -15,6 +15,8 @@ echo "#############"
 echo "${INPUT_SERVICE_ACCOUNT}"
 gcloud auth activate-service-account --key-file="${HOME}/gcloud.json"
 
+gcloud auth configure-docker
+
 echo "%%%%%%%%%%%%%%%%%%%%%%%"
 echo "${INPUT_REGISTRY}/${INPUT_NAME}"
 
