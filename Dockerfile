@@ -1,4 +1,4 @@
-FROM gcr.io/cloud-builders/docker
+FROM gcr.io/cloud-builders/gcloud
 
 COPY entrypoint.sh /entrypoint.sh
 
