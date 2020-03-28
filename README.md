@@ -47,6 +47,7 @@ This action builds docker image from the Dockerfile in the root of the repositor
 
 ## Example usage
 
+```yaml
 uses: actions/docker-build-push-gcr-update-gke-deployment-action@v1
 with:
   who-to-greet: 'Mona the Octocat'
@@ -59,3 +60,4 @@ with:
   namespace: 'dev'
   deployment: 'front-end-dep'
   container: 'front-end'
+  ```
