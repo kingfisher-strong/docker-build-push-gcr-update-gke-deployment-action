@@ -1,14 +1,12 @@
 name: Test
 on: [push]
 jobs:
-  hello_world_job:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build Image Push to GCR and Update GKE deployment
         uses: ./ 
-        id: hello
         with:
           service_account: ${{ secrets.GCLOUD_AUTH}}
           image_name: 'action-test:${{ github.sha }}'
