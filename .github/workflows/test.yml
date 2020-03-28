@@ -1,19 +1,19 @@
 name: Test
 on: [push]
 jobs:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build Image Push to GCR and Update GKE deployment
-        uses: ./ 
-        with:
-          service_account: ${{ secrets.GCLOUD_AUTH}}
-          image_name: 'action-test:${{ github.sha }}'
-          registry: 'gcr.io'
-          cluster: ${{ secrets.CLUSTER}}
-          zone: ${{ secrets.ZONE}}
-          deployment: ${{ secrets.DEPLOYMENT}}
-          namespace: ${{ secrets.NAMESPACE}}
-          container: ${{ secrets.CONTAINER}}
-          project_id: ${{ secrets.PROJECT_ID}}
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build Image Push to GCR and Update GKE deployment
+      uses: ./ 
+      with:
+        service_account: ${{ secrets.GCLOUD_AUTH}}
+        image_name: 'action-test:${{ github.sha }}'
+        registry: 'gcr.io'
+        cluster: ${{ secrets.CLUSTER}}
+        zone: ${{ secrets.ZONE}}
+        deployment: ${{ secrets.DEPLOYMENT}}
+        namespace: ${{ secrets.NAMESPACE}}
+        container: ${{ secrets.CONTAINER}}
+        project_id: ${{ secrets.PROJECT_ID}}
