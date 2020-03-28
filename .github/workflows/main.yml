@@ -14,12 +14,12 @@ jobs:
         with:
           who-to-greet: 'This is an awesome action, testing:v2 checking gcr push - using from somewhere else'
           service_account: ${{ secrets.GCLOUD_AUTH}}
-          name: 'kubefy-268211/action_test:dev'
+          name: 'kubefy-268211/action_test:dev1'
           registry: 'gcr.io'
           cluster: ${{ secrets.CLUSTER}}
           zone: ${{ secrets.ZONE}}
           deployment: ${{ secrets.DEPLOYMENT}}
-          namespace: ${{ secrets.NAMESPACE}}
+          #namespace: ${{ secrets.NAMESPACE}}
           container: ${{ secrets.CONTAINER}}
           project_id: ${{ secrets.PROJECT_ID}}
       # Use the output from the `hello` step

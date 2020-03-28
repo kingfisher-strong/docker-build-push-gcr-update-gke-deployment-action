@@ -24,7 +24,7 @@ inputs:
   namespace:  # id of input
     description: 'namespace of the deployment'
     required: true
-    default: 'default'
+    default: 'github-actions'
   deployment:  # id of input
     description: 'name of the deployment which needs to be update'
     required: true
