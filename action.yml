@@ -15,6 +15,22 @@ inputs:
     description: 'GCR registry host, It could be gcr.io/us.gcr.io/eu.gcr.io/asia.gcr.io'
     required: true
     default: 'gcr.io'
+  cluster:  # id of input
+    description: 'Name of GKE cluster'
+    required: true
+  zone:  # id of input
+    description: 'Cluster Zone'
+    required: true
+  namespace:  # id of input
+    description: 'namespace of the deployment'
+    required: true
+    default: 'default'
+  deployment:  # id of input
+    description: 'name of the deployment which needs to be update'
+    required: true
+  container:  # id of input
+    description: 'name of container whose image needs to be updated'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'
@@ -26,3 +42,9 @@ runs:
     - ${{ inputs.service_account }}
     - ${{ inputs.name}}
     - ${{ inputs.registry}}
+    - ${{ inputs.cluster}}
+    - ${{ inputs.zone}}
+    - ${{ inputs.project_id}}
+    - ${{ inputs.namespace}}
+    - ${{ input.deployment}}
+    - ${{ inputs.container}}
