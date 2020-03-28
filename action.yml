@@ -1,4 +1,3 @@
-# action.yml
 name: 'docker-build-push-gcr-update-gke-deployment-action'
 description: 'Build docker image, push to GCR and update GKE deployment in defined namespace'
 inputs:
@@ -9,38 +8,38 @@ inputs:
     description: 'Cluster Zone'
     required: true
   project_id:
-    description: 'project id from GCP'
+    description: 'Project ID from GCP'
     required: true
   registry: 
     description: 'GCR registry host, It could be gcr.io/us.gcr.io/eu.gcr.io/asia.gcr.io'
     required: true
     default: 'gcr.io'
   image_name:  
-    description: 'name of the image'
+    description: 'Name of the image'
     required: true  
   cluster:  
     description: 'Name of GKE cluster'
     required: true
   namespace:  
-    description: 'namespace of the deployment'
+    description: 'Namespace of the deployment'
     required: true
     default: 'default'
   deployment:  
-    description: 'name of the deployment which needs to be update'
+    description: 'Name of the deployment which needs to be update'
     required: true
   container:  
-    description: 'name of container whose image needs to be updated'
+    description: 'Name of container whose image needs to be updated'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.service_account }}
-    - ${{ inputs.image_name}}
-    - ${{ inputs.registry}}
-    - ${{ inputs.cluster}}
     - ${{ inputs.zone}}
     - ${{ inputs.project_id}}
+    - ${{ inputs.registry}}
+    - ${{ inputs.image_name}}
+    - ${{ inputs.cluster}}
     - ${{ inputs.namespace}}
     - ${{ inputs.deployment}}
     - ${{ inputs.container}}

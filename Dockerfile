@@ -1,4 +1,4 @@
-FROM gcr.io/cloud-builders/gcloud-slim  
+FROM gcr.io/cloud-builders/gcloud-slim
 
 RUN apt-get -y update && \
     apt-get -y install \

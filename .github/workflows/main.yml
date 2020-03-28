@@ -3,12 +3,12 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to do magic
+    name: A job to build and push image to GCR and then update GKE deployment with that image.
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build Image Push to GCR and Update GKE deployment
-        uses: ./ # Uses an action in the root directory
+        uses: ./ 
         id: hello
         with:
           service_account: ${{ secrets.GCLOUD_AUTH}}
