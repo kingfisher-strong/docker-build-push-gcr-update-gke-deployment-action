@@ -50,7 +50,6 @@ This action builds docker image from the Dockerfile in the root of the repositor
 ```yaml
 uses: actions/docker-build-push-gcr-update-gke-deployment-action@v1
 with:
-  who-to-greet: 'Mona the Octocat'
   service_account: ${{ secrests.GCLOUD_AUTH}} 
   zone: 'us-central1-c'
   project_id: 'actiondemo-345343'
