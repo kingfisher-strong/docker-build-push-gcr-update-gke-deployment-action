@@ -3,25 +3,20 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to do magic
     steps:
-      # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step and authenticate gcloud cli
+      - name: Build Image Push to GCR and Update GKE deployment
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'This is an awesome action, testing:v2 checking gcr push - using from somewhere else'
           service_account: ${{ secrets.GCLOUD_AUTH}}
-          name: 'kubefy-268211/action_test:dev1'
+          image_name: 'action-test:${{ github.sha }}'
           registry: 'gcr.io'
           cluster: ${{ secrets.CLUSTER}}
           zone: ${{ secrets.ZONE}}
           deployment: ${{ secrets.DEPLOYMENT}}
-          #namespace: ${{ secrets.NAMESPACE}}
+          namespace: ${{ secrets.NAMESPACE}}
           container: ${{ secrets.CONTAINER}}
           project_id: ${{ secrets.PROJECT_ID}}
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"

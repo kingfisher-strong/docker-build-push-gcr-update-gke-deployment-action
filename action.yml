@@ -1,46 +1,42 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'docker-build-push-gcr-update-gke-deployment-action'
+description: 'Build docker image, push to GCR and update GKE deployment in defined namespace'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
   service_account:
     description: 'Base64 encoded service account JSON from GCP IAM service account'
     required: true
-  name:  # id of input
-    description: 'PROJECT_ID/REPONAME:TAG format'
+  zone: 
+    description: 'Cluster Zone'
     required: true
-  registry:  # id of input
+  project_id:
+    description: 'project id from GCP'
+    required: true
+  registry: 
     description: 'GCR registry host, It could be gcr.io/us.gcr.io/eu.gcr.io/asia.gcr.io'
     required: true
     default: 'gcr.io'
-  cluster:  # id of input
+  image_name:  
+    description: 'name of the image'
+    required: true  
+  cluster:  
     description: 'Name of GKE cluster'
     required: true
-  zone:  # id of input
-    description: 'Cluster Zone'
-    required: true
-  namespace:  # id of input
+  namespace:  
     description: 'namespace of the deployment'
     required: true
-    default: 'github-actions'
-  deployment:  # id of input
+    default: 'default'
+  deployment:  
     description: 'name of the deployment which needs to be update'
     required: true
-  container:  # id of input
+  container:  
     description: 'name of container whose image needs to be updated'
     required: true
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
     - ${{ inputs.service_account }}
-    - ${{ inputs.name}}
+    - ${{ inputs.image_name}}
     - ${{ inputs.registry}}
     - ${{ inputs.cluster}}
     - ${{ inputs.zone}}

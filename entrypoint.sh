@@ -2,26 +2,12 @@
 
 set -e
 
-echo "Hello $1"
-time=$(date)
-echo "::set-output name=time::$time"
-
 
 echo "${INPUT_SERVICE_ACCOUNT}" | base64 -d > "${HOME}/gcloud.json" 
-echo "**********"
-ls "${HOME}"
-cat "${HOME}/gcloud.json"
-echo "#############"
-echo "${INPUT_SERVICE_ACCOUNT}"
 gcloud auth activate-service-account --key-file="${HOME}/gcloud.json"
 
 gcloud auth configure-docker
-
-echo "%%%%%%%%%%%%%%%%%%%%%%%"
-echo "${INPUT_REGISTRY}/${INPUT_NAME}"
-
-docker build -t "${INPUT_REGISTRY}/${INPUT_NAME}" .
-
+docker build -t "${INPUT_REGISTRY}/${PROJECT_ID}/${IMAGE_NAME}" .
 docker push "${INPUT_REGISTRY}/${INPUT_NAME}"
 
 gcloud container clusters get-credentials "${INPUT_CLUSTER}" --zone "${INPUT_ZONE}" --project "${INPUT_PROJECT_ID}" && gcloud components install kubectl && kubectl -n "${INPUT_NAMESPACE}" set image deployment/"${INPUT_DEPLOYMENT}" "${INPUT_CONTAINER}"="${INPUT_REGISTRY}/${INPUT_NAME}"
