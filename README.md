@@ -1,5 +1,8 @@
 # docker-build-push-gcr-update-gke-deployment-action
 
+[![Actions Status](https://github.com/shashank0202/docker-build-push-gcr-update-gke-deployment-action/workflows/Test/badge.svg)](https://github.com/shashank0202/docker-build-push-gcr-update-gke-deployment-action/actions)
+
+
 This action builds docker image from the Dockerfile in the root of the repository, Pushes it to Google Container Registry and then updates the specified deployment running in the GKE(Google Kubernetes Engine)
 
 ## Inputs
